@@ -14,9 +14,9 @@
  * }
  */
 class Solution {
-    public int findIndex(int x, int[] inOrder){
-        for(int i = 0; i<inOrder.length;i++){
-            if(inOrder[i] == x)
+    public int findIndex(int x, int[] inOrder, int s, int e){
+        for(int i = s; i<=e; i++){
+            if(x == inOrder[i])
             return i;
         }
         return -1;
@@ -28,7 +28,7 @@ class Solution {
         
         TreeNode root = new TreeNode(preOrder[sp]);
 
-        int index = findIndex(preOrder[sp], inOrder);
+        int index = findIndex(preOrder[sp], inOrder, si, ei);
         root.left=helper(preOrder, inOrder, sp+1, sp+index-si, si, index-1);
         root.right = helper(preOrder, inOrder, sp+index-si+1,ep,index+1, ei);
 
